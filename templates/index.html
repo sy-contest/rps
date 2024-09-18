@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" type="image/png" href="/static/game-trophy.png">
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#9999FF">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="RPS Game">
+    <link rel="apple-touch-icon" href="/static/game-trophy.png">
+</head>
+<body>
+    <div id="login-form" class="form-grid">
+        <input type="text" id="username" placeholder="Enter your username">
+        <input type="text" id="game-id" placeholder="Enter game ID">
+        <button id="login-button">Login</button>
+    </div>
+    <div id="game-area" class="game-container" style="display: none;">
+        <div class="opponent-half">
+            <h2>Opponent</h2>
+            <div id="opponent-name"></div>
+            <div id="opponent-choice"></div>
+            <div id="player2-score"></div>
+        </div>
+        <div class="player-half">
+            <h2>You</h2>
+            <div id="player-name"></div>
+            <div id="player1-score"></div>
+            <div id="choices" class="choices-grid">
+                <button class="choice" data-choice="rock">Rock</button>
+                <button class="choice" data-choice="paper">Paper</button>
+                <button class="choice" data-choice="scissors">Scissors</button>
+            </div>
+        </div>
+        <div id="result" class="result-overlay"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="/static/script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

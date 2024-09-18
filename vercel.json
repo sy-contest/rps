@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.py",
+      "use": "@vercel/python"
+    },
+    { "src": "static/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/manifest.json", "dest": "/static/manifest.json" },
+    { "src": "/service-worker.js", "dest": "/static/service-worker.js" },
+    { "src": "/(.*)", "dest": "/api/index.py" }
+  ]
+}
